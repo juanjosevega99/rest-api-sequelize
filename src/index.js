@@ -2,12 +2,10 @@ const app = require('./app');
 
 const { sequelize } = require('./database/index');
 const { port } = require('../config');
-require('./models/Project');
-require('./models/Task');
 
 (async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
     console.info(`DB Connection has been established successfully`);
     app.listen(port);
     console.info(`Server running at ${port}`);
