@@ -1,4 +1,5 @@
 const { Project } = require('../models/Project');
+const { Task } = require('../models/Task');
 
 const getProjects = async (req, res) => {
   try {
@@ -72,10 +73,21 @@ const deleteProject = async (req, res) => {
   }
 };
 
+const getProjectTasks = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const tasks = await Task.findAll({ where: { projectId: id } });
+    res.json(tasks);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getProjects,
   getProject,
   createProjects,
   updateProject,
-  deleteProject
+  deleteProject,
+  getProjectTasks
 };
