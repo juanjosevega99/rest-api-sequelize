@@ -1,14 +1,20 @@
 const { Router } = require('express');
 
-const { getProjects, createProjects } = require('../controllers/projects')
+const {
+  getProjects,
+  createProjects,
+  updateProject,
+  deleteProject,
+  getProject
+} = require('../controllers/projects');
 
 const router = Router();
 
 router.get('/projects', getProjects);
-// router.get('/projects', getProjects);
+router.get('/projects/:id', getProject);
 router.post('/projects', createProjects);
-// router.put('/projects', getProjects);
-// router.delete('/projects', getProjects);
+router.put('/projects/:id', updateProject);
+router.delete('/projects/:id', deleteProject);
 
 module.exports = {
   router
