@@ -16,6 +16,4 @@ router.post('/projects', createProjects);
 router.put('/projects/:id', updateProject);
 router.delete('/projects/:id', deleteProject);
 
-module.exports = {
-  router
-};
+module.exports = router;
